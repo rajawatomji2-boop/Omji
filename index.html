@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Hub with Game</title>
+<style>
+  body { margin:0; font-family:'Segoe UI',sans-serif; background:#f0f4f8; color:#333; }
+  header { background: linear-gradient(90deg,#2a73cc,#1e56a0); color:white; padding:20px; text-align:center; box-shadow:0 3px 8px rgba(0,0,0,0.2);}
+  header h1{ margin:0; font-size:42px;}
+  nav{ display:flex; justify-content:center; background:#1e56a0; flex-wrap:wrap;}
+  nav a{ color:white; text-decoration:none; padding:14px 22px; margin:2px; border-radius:6px; transition:0.3s; font-weight:500; cursor:pointer;}
+  nav a:hover{ background:#163d73; }
+  .homeContent{ text-align:center; padding:60px 20px; background:linear-gradient(to right,#2a73cc,#1e56a0); color:white; border-radius:10px; margin:20px auto; max-width:900px; box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+  .homeContent img{ width:200px; height:200px; border-radius:50%; margin-top:20px; object-fit:cover; border:4px solid white;}
+  .section{ display:none; padding:40px 20px; max-width:1000px; margin:auto;}
+  .section h2{ color:#2a73cc; margin-bottom:20px; border-bottom:2px solid #2a73cc; display:inline-block; padding-bottom:5px;}
+  .notes, .formulas, .comments, .test{ background:white; padding:25px; margin-bottom:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+  .notes p, .formulas ul li{ font-size:17px; margin-bottom:10px;}
+  .formulas ul{ list-style-type:"✅ "; padding-left:25px;}
+  .formulas li:hover{ background:#e0f0ff; border-radius:5px; padding-left:5px;}
+  .comments input, .comments textarea{ width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc; font-size:16px;}
+  .comments button{ background:#2a73cc; color:white; padding:12px 22px; border:none; border-radius:6px; cursor:pointer; transition:0.3s;}
+  .comments button:hover{ background:#163d73; }
+  .test input[type="radio"]{ margin-right:8px; transform:scale(1.2);}
+  .test button{ margin-top:18px; background:#2a73cc; color:white; padding:12px 22px; border:none; border-radius:6px; cursor:pointer; transition:0.3s;}
+  .test button:hover{ background:#163d73; }
+  .correct{ background-color:#d4edda; border-radius:5px;}
+  .wrong{ background-color:#f8d7da; border-radius:5px;}
+  footer{ text-align:center; padding:18px; background:#1e56a0; color:white; margin-top:20px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📚 Study Hub</h1>
+  <p>आपके अध्ययन का स्थान | Created by Omji Rajawat</p>
+</header>
+
+<nav>
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('notes')">नोट्स</a>
+  <a onclick="showSection('formulas')">फॉर्मूला</a>
+  <a onclick="showSection('test')">टेस्ट</a>
+  <a onclick="showSection('contact')">संपर्क करें</a>
+  <a onclick="showSection('game')">🎮 Game</a>
+</nav>
+
+<!-- Home -->
+<div class="section" id="home">
+  <div class="homeContent">
+    <h1>Sunder SA</h1>
+    <p>मेरा नाम Omji Rajawat है। मैं Bharsen में रहता हूँ।</p>
+    <img src="omji.jpg" alt="Omji Rajawat">
+  </div>
+</div>
+
+<!-- Notes -->
+<div class="section" id="notes">
+  <h2>📖 नोट्स</h2>
+  <div class="notes">
+    <p>📌 कक्षा 12 भौतिकी नोट्स</p>
+    <p>📌 कक्षा 12 रसायन विज्ञान नोट्स</p>
+    <p>📌 कक्षा 12 गणित नोट्स</p>
+  </div>
+</div>
+
+<!-- Formulas -->
+<div class="section" id="formulas">
+  <h2>🧮 कक्षा 12 गणित फॉर्मूला</h2>
+  <div class="formulas">
+    <h3>📐 ज्यामिति (2D)</h3>
+    <ul>
+      <li>⭕ वृत्त का क्षेत्रफल = πr²</li>
+      <li>⭕ वृत्त की परिधि = 2πr</li>
+      <li>▭ आयत का क्षेत्रफल = लंबाई × चौड़ाई</li>
+      <li>◻️ वर्ग का क्षेत्रफल = a²</li>
+      <li>🔺 त्रिभुज का क्षेत्रफल = ½ × आधार × ऊँचाई</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Test -->
+<div class="section" id="test">
+  <h2>📝 गणित टेस्ट - अध्याय 1</h2>
+  <div class="test">
+    <ol>
+      <li>
+        √(16) का मान क्या है?<br>
+        <input type="radio" name="q1" value="a"> 2
+        <input type="radio" name="q1" value="b"> 4
+        <input type="radio" name="q1" value="c"> 8
+        <input type="radio" name="q1" value="d"> 16
+      </li>
+      <li>
+        यदि a² = 25, तो a = ?<br>
+        <input type="radio" name="q2" value="a"> 5
+        <input type="radio" name="q2" value="b"> -5
+        <input type="radio" name="q2" value="c"> ±5
+        <input type="radio" name="q2" value="d"> 0
+      </li>
+    </ol>
+    <button onclick="checkTest()">उत्तर जांचें</button>
+    <div id="testResult" style="margin-top:15px;font-weight:bold;"></div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="section" id="contact">
+  <h2>📩 संपर्क करें</h2>
+  <div class="comments">
+    <input type="text" id="name" placeholder="आपका नाम">
+    <textarea id="comment" rows="4" placeholder="आपकी टिप्पणी"></textarea>
+    <button onclick="submitComment()">जमा करें</button>
+    <div id="commentSection"></div>
+  </div>
+</div>
+
+<!-- Game -->
+<div class="section" id="game">
+  <h2>🎮 Omji Race Game</h2>
+  <canvas id="gameCanvas" width="800" height="400" style="border:2px solid #333; display:block; margin:auto;"></canvas>
+  <p style="text-align:center; margin-top:10px;">Use Arrow Keys to Move the Car</p>
+</div>
+
+<footer>
+  <p>© 2025 Study Hub | Made with ❤️ by Omji Rajawat</p>
+</footer>
+
+<script>
+// Section display
+function showSection(sectionId){
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(sec => sec.style.display='none');
+  document.getElementById(sectionId).style.display='block';
+}
+showSection('home');
+
+// Comment functionality
+function submitComment(){
+  const name = document.getElementById('name').value.trim();
+  const comment = document.getElementById('comment').value.trim();
+  if(name && comment){
+    const div = document.getElementById('commentSection');
+    const p = document.createElement('p');
+    p.innerHTML = `<strong>${name}:</strong> ${comment}`;
+    div.appendChild(p);
+    document.getElementById('name').value='';
+    document.getElementById('comment').value='';
+  } else {
+    alert('Please enter both name and comment!');
+  }
+}
+
+// Test functionality
+function checkTest(){
+  const answers = {q1:'b', q2:'c'};
+  let score = 0;
+  for(let i=1;i<=2;i++){
+    const radios = document.getElementsByName('q'+i);
+    radios.forEach(r=>{
+      r.parentElement.classList.remove('correct','wrong');
+      if(r.checked){
+        if(r.value === answers['q'+i]){
+          r.parentElement.classList.add('correct');
+          score++;
+        } else {
+          r.parentElement.classList.add('wrong');
+        }
+      }
+    });
+  }
+  document.getElementById('testResult').innerText="Your Score: "+score+" / 2";
+}
+
+// Game JS
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+let car={x:350,y:300,width:100,height:50,color:'#ff0000'};
+let speed = 5;
+
+function drawCar(){
+  ctx.fillStyle=car.color;
+  ctx.fillRect(car.x,car.y,car.width,car.height);
+}
+
+function drawRoad(){
+  ctx.fillStyle='#555';
+  ctx.fillRect(0,canvas.height-100,canvas.width,100);
+}
+
+function updateGame(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawRoad();
+  drawCar();
+  requestAnimationFrame(updateGame);
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft' && car.x>0) car.x-=speed;
+  if(e.key==='ArrowRight' && car.x+car.width<canvas.width) car.x+=speed;
+  if(e.key==='ArrowUp' && car.y>0) car.y-=speed;
+  if(e.key==='ArrowDown' && car.y+car.height<canvas.height-100) car.y+=speed;
+});
+
+updateGame();
+</script>
+
+</body>
+</html>
